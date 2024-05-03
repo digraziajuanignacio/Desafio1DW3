@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Styles/style.css'
 
 function App() {
 
@@ -7,7 +8,9 @@ const [task, setTask] = useState([]); // Array Vacio que guarda las tareas
 const [newTask, setNewTask] = useState(''); // Inputs que se van a ir añadiendo al array
 
 const handleInputChange = (event) => {
-  setNewTask(event.target.value) // Referencia a lo que se escribe en el Input, modifica al array vacio de partida
+  if (event.target.value.length <= 60) { // Maximo 100 caracteres
+  setNewTask(event.target.value)  // Referencia a lo que se escribe en el Input, modifica al array vacio de partida
+}
 }
 
 const handleAddTask = () => {
@@ -31,13 +34,17 @@ const handleDeleteTask = (index) => {
   <div>
     <h1>Desafio 2 Barra de Tareas</h1>
     <input
+      class="form-control custom-input"
       type="text"
       placeholder="Agrega tu Tarea:"
       value={newTask} // Valor que toma el input, toma el que se establecio en el setNewTask
       onChange={handleInputChange} // Funcion que escucha lo que escribe el teclado
     />
   {/* Boton y Funcion que Agregan la tarea a la lista */}
-    <button onClick={handleAddTask}>Agregar Tarea</button>
+  <div class="d-flex justify-content-center align-items-center pt-3">
+    <button class="btn btn-success" onClick={handleAddTask}>Agregar Tarea</button>
+    </div>
+    <div class="d-flex justify-content-center align-items-center pt-3">
     <ul>
   {/* Mapeo de las tareas y su index en el array */}
       {task.map((value, index)=> (
@@ -46,10 +53,11 @@ const handleDeleteTask = (index) => {
         {/* Se muestra el valor tomado del mapeo */}
           {value}
   {/* Funcion y boton que borra la tarea nueva */}
-          <button onClick={()=> handleDeleteTask(index)}>Eliminar</button>
+          <button class="btn btn-danger buttonDelete" onClick={()=> handleDeleteTask(index)}>Eliminar</button>
         </li>
       ))}
     </ul>
+    </div>
   </div>
 
   )

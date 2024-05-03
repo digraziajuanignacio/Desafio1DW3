@@ -1,0 +1,26 @@
+* {
+    background-color: #1B1E23;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    color: #ffff;
+}
+
+.custom-input {
+    width: 100%; /* Ancho del input al 100% del contenedor */
+    max-width: 350px;
+    margin: 0 auto; /* Ancho máximo del input */
+}
+
+.buttonDelete {
+    margin-left: 15px;
+}
+
+li {
+    color: #ffff;
+    font-size: 30px;
+    list-style: none;
+}
